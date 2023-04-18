@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Product page</title>
+<link th:href="@{/webjars/font-awesome/6.2.1/css/all.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/css/index.css}" rel="stylesheet" />
+</head>
+<body>
+	<div class="p-5">
+		<div th:replace="~{layout/header :: header}"></div>
+		<div class="pt-5">
+			<div class="product row gap-5">
+				<div class="col-7 bg-img shadow text-center">
+					<img th:src="@{'/img/'+${product.image}}" alt="" />
+				</div>
+				<div class="col-4">
+					<p class="display-4" th:text="${product.name}"></p>
+					<p class="fs-5">Men's shoes</p>
+					<p class="mt-4" th:text="${product.price} + '$'">$20.00</p>
+					<ul class="ps-4">
+						<li class="text-success"><p>In stock</p></li>
+					</ul>
+					<p class="mb-3">
+						<span class="fw-bold">Description:</span> Lorem ipsum dolor sit
+						amet consectetur adipisicing elit. Porro hic excepturi eveniet
+						quaerat expedita aliquid nisi, quidem explicabo odio deserunt,
+						vitae vel nostrum laboriosam inventore consequuntur dolor culpa
+						repellendus nesciunt.
+					</p>
+					<a th:href="@{'/add-product/'+${product.getProductId()}}" class="btn btn-outline-secondary w-100">Add to Bag</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace="~{layout/footer :: footer}"></div>
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.6.1/jquery.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}"></script>
+</body>
+</html>
